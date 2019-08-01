@@ -15,6 +15,7 @@ page{
 .user-name{
   font-size: 32rpx;
   font-weight: bold;
+  margin-top: 100rpx;
 }
 .moto{
   font-size: 22rpx;

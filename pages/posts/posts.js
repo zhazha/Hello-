@@ -1,39 +1,49 @@
 // pages/posts/posts.js
+
+var postsData = require('../../data/posts-data.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    date: "Nov 18 2019",
-    title: "正是虾肥蟹胖时"
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var posts_content = [{
-        date: "Nov 10 2019",
-        title: "正是虾肥蟹壮时",
-        imgSrc: "/images/post/crab.png",
-        content: "菊黄蟹正肥，品尝秋之味。徐志摩把“看初花的荻芦”和“到楼外楼吃蟹”并列为秋天来杭州不能错过的风雅之事；用林妹妹的话讲是“螯封嫩玉双双满，壳凸红脂块块香”；在《世说新语》里，晋毕卓更是感叹“右手持酒杯，左手持蟹螯，拍浮酒船中，便足了一生矣。",
-        reading: "112",
-        collection: "96",
-        avatar: "/images/avatar/1.png"
-      },
-      {
-        date: "Sep 16 2019",
-        title: "比利·林恩的中场战事",
-        imgSrc: "/images/post/bl.png",
-        content: "《比利·林恩的中场战事》根据本·芳汀同名小说改编，讲述了在伊拉克战争中的美国士兵比利·林恩与战友战胜归来并被誉为美国英雄，在一场橄榄球公开赛的中场表演过程中，揭露这群士兵在战场上真实经历的故事。",
-        reading: "122",
-        collection: "66",
-        avatar: "/images/avatar/2.png"
-      }
-    ]
+    // this.data.postList = postsData.postList
     this.setData({
-      posts_key: posts_content
+      posts_key: postsData.postList
+    })
+  },
+  /**
+   * 跳转详情页
+   */
+  onPostTap: function(event) {
+    var postId = event.currentTarget.dataset.postid;
+    // console.log(postId)
+    wx.navigateTo({
+      url: 'posts-detail/posts-detail?id=' + postId
+    })
+  },
+
+  // onSwiperItemTap:function(event){
+  //   var postId = event.currentTarget.dataset.postid;
+  //   wx.navigateTo({
+  //     url: 'posts-detail/posts-detail?id='+postId,
+  //   })
+  // },
+
+  onSwiperTap: function (event) {
+    //target和currentTarget
+    //target指的是当前点击的组件  和    currentTarget指的是事件捕获的组件
+    //target这里指的是image，而currentTarget指的是Swiper
+    var postId = event.target.dataset.postid;
+    wx.navigateTo({
+      url: 'posts-detail/posts-detail?id=' + postId,
     })
   },
 

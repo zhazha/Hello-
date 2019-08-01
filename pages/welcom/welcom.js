@@ -6,7 +6,12 @@ Page({
     // })
     console.log('白发皇妃')
 
-    wx.redirectTo({
+    // wx.redirectTo({
+    //   url: '../posts/posts',
+    // })
+
+    //路由API
+    wx.switchTab({
       url: '../posts/posts',
     })
   }
